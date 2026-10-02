@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Boyfriend Day</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:Poppins,sans-serif;color:#222;overflow-x:hidden}
+.s{display:none;min-height:100vh;padding:84px 16px 40px;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.s.on{display:flex}
+.cream{background:repeating-linear-gradient(90deg,#fde6a8aa 0 40px,transparent 40px 80px),repeating-linear-gradient(0deg,#fde6a8aa 0 40px,transparent 40px 80px),#fffaf0}
+.blue{background:repeating-linear-gradient(90deg,#c9ddf3aa 0 30px,transparent 30px 60px),repeating-linear-gradient(0deg,#c9ddf3aa 0 30px,transparent 30px 60px),#f6faff}
+.grid{background:linear-gradient(#d9dee6 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,#d9dee6 1px,transparent 1px) 0 0/24px 24px,#fff}
+.yellow{background:#fffbd6}
+h1,h2,h3{font-family:'Playfair Display',serif;color:#db2777}
+h1{font-size:clamp(30px,7vw,52px)}h2{font-size:clamp(26px,5vw,40px)}
+.btn{border:0;border-radius:99px;padding:14px 32px;font:600 17px Poppins,sans-serif;background:#ec4899;color:#fff;cursor:pointer;box-shadow:0 8px 20px #ec489955}
+.btn.dark{background:#1f2937;box-shadow:none}.btn.ghost{background:#fff;color:#333;box-shadow:none}
+.top{position:fixed;top:12px;left:12px;z-index:9;display:flex;gap:8px}
+.top button{border:1px solid #fbcfe8;background:#fffd;color:#be185d;font:600 13px Poppins,sans-serif;padding:10px 16px;border-radius:99px;cursor:pointer}
+.pic{width:200px;height:200px;object-fit:contain;border-radius:18px}
+.ph{display:flex;align-items:center;justify-content:center;border:2px dashed #f9a8d4;background:#fdf2f8;color:#ec4899;font-size:13px;padding:8px}
+.card{background:#fffc;border:1px solid #fbcfe8;border-radius:24px;padding:14px;width:min(560px,92vw);box-shadow:0 8px 24px #0001}
+.row{display:flex;gap:10px;justify-content:center}
+.opt{border:0;background:#fff;border-radius:14px;padding:14px 22px;font:500 17px Poppins,sans-serif;cursor:pointer;min-width:120px}
+.opt.sel0{background:#f472b6;color:#fff}.opt.sel1{background:#60a5fa;color:#fff}
+.cap{color:#be185d;font-weight:500;margin-top:8px;min-height:24px}
+.hid{display:none;flex-direction:column;align-items:center;gap:12px}
+.nw{position:relative;width:min(340px,90vw);height:130px}
+.nw button{position:absolute;transition:.25s}
+#board{display:grid;grid-template-columns:repeat(3,92px);gap:10px}
+.cell{height:92px;background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:40px;cursor:pointer;box-shadow:0 2px 8px #0001}
+.pr{display:flex;gap:14px;align-items:center;background:#fffd;border-radius:99px;padding:14px 22px;width:min(520px,92vw);text-align:left;cursor:pointer;font-weight:500;box-shadow:0 4px 14px #0001}
+.ck{width:28px;height:28px;border-radius:50%;border:2px solid #9ca3af;color:#fff;text-align:center;line-height:24px;flex:none}
+.pr.d .ck{background:#ec4899;border-color:#ec4899}.pr.d span:last-child{text-decoration:line-through;opacity:.55}
+.q{font:600 22px Poppins,sans-serif;margin:14px 0 8px;min-height:70px}
+#ttl b{display:inline-block;padding:6px 9px;margin:2px;border-radius:99px;font-size:22px}
+#col{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(520px,92vw)}
+.pol{background:#fff;border-radius:16px;padding:10px;box-shadow:0 6px 18px #0002;border:4px dotted #fbcfe8}
+.pol .pic{width:100%;height:auto;aspect-ratio:1}.pc{font:700 15px 'Playfair Display',serif;color:#db2777;margin-top:6px}
+.fc{width:260px;height:340px;perspective:900px;cursor:pointer}
+.fi{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.fc.f .fi{transform:rotateY(180deg)}
+.fa,.fb{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;box-shadow:0 10px 30px #0002}
+.fa{background:#f9a8d4;font:700 28px 'Playfair Display',serif;color:#fff}
+.fb{background:#fdf2f8;transform:rotateY(180deg);color:#be185d;font-weight:600}
+.r{position:fixed;top:-40px;z-index:20;pointer-events:none;animation:f linear forwards}
+@keyframes f{to{transform:translateY(115vh) rotate(360deg)}}
+#ov{position:fixed;inset:0;background:#fff8;backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:15;font:700 52px 'Playfair Display',serif;color:#f472b6}
+@media(prefers-reduced-motion:reduce){.r{display:none}}
+</style></head><body>
+
+<div class="top"><button id="back">← BACK</button><button id="mus">🎵 MUSIC OFF</button></div>
+<div id="ov">Muah! 💋</div>
+
+<!-- 0 INTRO -->
+<section class="s yellow on">
+  <div data-pic="intro"></div>
+  <h1>Happy Boyfriend Day, Baby (My Betu)!</h1>
+  <p>I made a little something just for you…</p>
+  <button class="btn" id="open">Open My Heart ♥</button>
+</section>
+
+<!-- 1 THIS OR THAT -->
+<section class="s blue">
+  <div data-pic="that"></div><h2>This or That</h2>
+  <div id="tt" style="display:grid;gap:12px;width:min(560px,92vw)"></div>
+  <div class="hid" id="ttend"><b>Compatibility calculated! Result locked 🔒</b><button class="btn dark" onclick="go(2)">Continue ›</button></div>
+</section>
+
+<!-- 2 LOVE QUESTION -->
+<section class="s grid">
+  <div id="lp"><div data-pic="love"></div></div>
+  <h2>Do you love me as much as I love you?</h2>
+  <div class="nw"><button class="btn" id="yes" style="left:0;top:0">Yes, obviously! 💖</button><button class="btn ghost" id="no" style="left:62%;top:0">No 🙄</button></div>
+  <p id="nomsg"></p>
+</section>
+
+<!-- 3 PERCENT -->
+<section class="s cream">
+  <div data-pic="pct"></div>
+  <h1 style="font-size:84px">100%</h1>
+  <p><b>100% compatible — because you're my Kuchu Puchu.</b></p>
+  <button class="btn" onclick="go(4)">Prove Your Love →</button>
+</section>
+
+<!-- 4 TIC TAC TOE -->
+<section class="s blue">
+  <h2>Win My Heart</h2><p>Nitesh: ❤️ | Monika: ⭐</p>
+  <div id="board"></div>
+  <div class="hid" id="wres"><div data-pic="win"></div><h3>Looks like you won the game…and my heart.</h3><button class="btn" onclick="go(5)">Continue</button></div>
+</section>
+
+<!-- 5 PROMISES -->
+<section class="s grid">
+  <div data-pic="promises"></div><h2>Our Promises</h2>
+  <div id="pl" style="display:grid;gap:10px"></div>
+  <div class="hid" id="pend"><h3>Promise accepted and permanently saved in my heart ✓</h3><button class="btn dark" onclick="go(6)">Continue ›</button></div>
+</section>
+
+<!-- 6 WHY I LOVE YOU -->
+<section class="s cream">
+  <h2>Why I Love You</h2>
+  <div class="card" id="wc" style="padding:28px 18px;min-height:380px"></div>
+  <div class="row"><button class="btn ghost" id="wb">Back</button><button class="btn" id="wn">Next Reason</button></div>
+</section>
+
+<!-- 7 COLLAGE -->
+<section class="s grid">
+  <div id="ttl"></div><div id="col"></div>
+  <button class="btn ghost" style="color:#db2777" onclick="go(8)">next ›</button>
+</section>
+
+<!-- 8 REWARD -->
+<section class="s cream">
+  <h2>A Special Reward for You</h2>
+  <div class="fc" id="fl"><div class="fi">
+    <div class="fa"> <img src="./14thimage.webp" alt="Love you more"
+       style="width:90%;height:220px;object-fit:cover;border-radius:16px;"><small style="font:500 14px Poppins">tap to flip</small></div>
+    <div class="fb"><div data-pic="reward"></div><span>One unlimited hug &amp; a surprise date!</span></div>
+  </div></div>
+  <button class="btn" id="claim" style="display:none" onclick="go(9)">Claim Reward &amp; Continue</button>
+</section>
+
+<!-- 9 LETTER -->
+<section class="s grid">
+  <h2>A Little Something for You</h2>
+  <div id="env" style="cursor:pointer"><div data-pic="letter0"></div><p style="color:#6b7280;margin-top:8px">Tap to open</p></div>
+  <div class="card hid" id="let" style="padding:24px">
+    <div data-pic="letter"></div>
+    <h3>To my favourite person…</h3>
+    <p id="ltxt" style="line-height:1.7"></p>
+  </div>
+  <button class="btn" id="kiss" style="display:none;width:min(560px,92vw)">Send Me a Kiss 💋</button>
+  <button class="btn ghost" id="rep" style="display:none">Replay Our Story</button>
+</section>
+
+<script>
+/* ===== EDIT HERE ===== */
+// Images: put your file path (e.g. 'img/us1.jpg'). Empty = placeholder box.
+const IMGS={intro:'./mainimage.webp',that:'./2ndimage.webp',love:'./3rdimage.webp',love2:'./4thimage.webp',pct:'./5thimage.webp',win:'./6thimage.webp',promises:'./7thimage.webp',
+  why0:'./8thimage.webp',why1:'./9thimage.webp',why2:'./10image.webp',why3:'./11imaage.webp',why4:'./12image.webp',why5:'./13image.webp',
+  c0:'./moni1.jpeg',c1:'./moni2.jpeg',c2:'./moni3.jpeg',c3:'./moni4.jpeg',reward:'./15thimage.webp',letter0:'./16thimage.webp',letter:'./17thimage.webp'};
+const MUSIC='./chaar-kadam-shaan-shreya-ghoshal-lyrics-pk-aamir-khan-anushka-sharma-lyric_ydeluhsK.mp3'; // your mp3 file next to this html
+// [optionA, captionA, optionB, captionB]
+const TT=[['Cuddles','Soft boy vibes 😏','Kisses','Kisses it is 😘'],
+ ['Texts','Good morning texts 💌','Calls','Hearing your voice is the best 📞'],
+ ['Movie date','Popcorn and your shoulder 🍿','Long drive','Playlist on, windows down 🚗'],
+ ['Cute fights','You just like making up afterwards 😂','No fights','Peace forever 🕊️'],
+ ['Matching outfits',"We're going to be THAT couple 👕",'Matching wallpapers','Our little secret 📱'],
+ ['Me','Good choice 😌','Everything else','Wrong answer 😤']];
+const PROMISES=['Unlimited hugs','Always listen to your rants','Never stay angry for too long','Support your dreams','Share my food…sometimes','Choose you, every day'];
+const WHY=['Because you make ordinary days special.','Because you always make me smile.','Because I feel safe with you.','Because you understand my silence.',"Because you're my favourite notification.","But honestly, I don't need a reason to love you."];
+const CAP=['The day everything started','My favourite picture of us','One moment I want to relive',"Still can't believe you're mine"];
+const LETTER="Happy Boyfriend Day, my love. Thank you for being you. You make my world brighter just by being in it. Here's to countless more memories together.";
+/* ===================== */
+
+const $=i=>document.getElementById(i);
+const pic=k=>IMGS[k]?`<img class="pic" src="${IMGS[k]}" alt="">`:`<div class="pic ph">📷 Add image<br>(${k})</div>`;
+const fill=r=>r.querySelectorAll('[data-pic]').forEach(e=>e.outerHTML=pic(e.dataset.pic));
+let cur=0,hist=[];
+function go(n,b){if(!b)hist.push(cur);document.querySelectorAll('.s').forEach((s,i)=>s.classList.toggle('on',i==n));cur=n;scrollTo(0,0);if(n==0)rain('💛',14)}
+$('back').onclick=()=>{if(hist.length)go(hist.pop(),1)};
+function rain(c,n){for(let i=0;i<n;i++){const e=document.createElement('span');e.className='r';e.textContent=c;e.style.cssText=`left:${Math.random()*100}vw;font-size:${16+Math.random()*26}px;animation-duration:${3+Math.random()*3}s;animation-delay:${Math.random()*1.5}s`;document.body.appendChild(e);setTimeout(()=>e.remove(),8000)}}
+
+// music
+const au=new Audio(MUSIC);au.loop=true;let on=false;
+function mus(){on=!on;on?au.play().catch(()=>{}):au.pause();$('mus').textContent=on?'🎵 MUSIC ON':'🎵 MUSIC OFF'}
+$('mus').onclick=mus;$('open').onclick=()=>{if(!on)mus();go(1)};
+
+// this or that
+let done=0;
+$('tt').innerHTML=TT.map((p,i)=>`<div class="card" id="t${i}"><div class="row"><button class="opt">${p[0]}</button><button class="opt">${p[2]}</button></div><div class="cap"></div></div>`).join('');
+TT.forEach((p,i)=>{const c=$('t'+i),b=c.querySelectorAll('.opt');b.forEach((x,j)=>x.onclick=()=>{if(!c.dataset.d){c.dataset.d=1;done++}b.forEach(y=>y.className='opt');x.className='opt sel'+j;c.querySelector('.cap').textContent=p[j*2+1];if(done==TT.length)$('ttend').style.display='flex'})});
+
+// love question
+function run(){$('nomsg').textContent='Are you seriously trying to press No? 😳';$('no').style.left=Math.random()*60+'%';$('no').style.top=Math.random()*70+'px'}
+$('no').onmouseenter=run;$('no').onclick=run;$('no').ontouchstart=e=>{e.preventDefault();run()};
+$('yes').onclick=()=>{$('lp').innerHTML='<div data-pic="love2"></div>';fill($('lp'));rain('💖',15);setTimeout(()=>go(3),1000)};
+
+// tic tac toe (you always end up winning)
+const L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+let B,lock;const won=p=>L.some(l=>l.every(i=>B[i]==p));
+function draw(){$('board').innerHTML=B.map((v,i)=>`<div class="cell" data-i="${i}">${v}</div>`).join('')}
+function reset(){B=Array(9).fill('');lock=0;draw()}
+$('board').onclick=e=>{const i=e.target.dataset.i;if(i==null||B[i]||lock)return;B[i]='❤️';draw();
+ if(won('❤️')){lock=1;$('wres').style.display='flex';rain('💖',12);return}
+ const f=B.map((v,k)=>v?-1:k).filter(x=>x>=0);if(!f.length)return setTimeout(reset,700);lock=1;
+ setTimeout(()=>{B[f[Math.random()*f.length|0]]='⭐';draw();lock=0;if(won('⭐')||!B.includes(''))setTimeout(reset,700)},400)};
+reset();
+
+// promises
+let pc=0;$('pl').innerHTML=PROMISES.map(t=>`<div class="pr"><span class="ck"></span><span>${t}</span></div>`).join('');
+document.querySelectorAll('.pr').forEach(e=>e.onclick=()=>{if(e.classList.contains('d'))return;e.classList.add('d');e.firstChild.textContent='✓';if(++pc==PROMISES.length)$('pend').style.display='flex'});
+
+// why I love you
+let w=0,last=WHY.length-1;
+function why(){$('wc').innerHTML=`<div data-pic="why${w}"></div><p class="q">"${WHY[w]}"</p>`;fill($('wc'));$('wb').style.opacity=w?1:.4;$('wn').textContent=w==last?'Continue ›':'Next Reason';$('wn').className='btn'+(w==last?' dark':'')}
+$('wb').onclick=()=>{if(w){w--;why()}};$('wn').onclick=()=>{if(w==last)go(7);else{w++;why()}};why();
+
+// collage
+$('col').innerHTML=CAP.map((t,i)=>`<div class="pol" style="transform:rotate(${[-4,3,3,-3][i]}deg)"><div data-pic="c${i}"></div><div class="pc">${t}</div></div>`).join('');
+$('ttl').innerHTML=[..."YOU'RE MY FAV PERSON"].map((c,i)=>c==' '?'<br>':`<b style="background:${['#fca5a5','#93c5fd','#86efac','#fde047','#f9a8d4'][i%5]}">${c}</b>`).join('');
+
+// reward
+$('fl').onclick=()=>{$('fl').classList.add('f');rain('💗',25);$('claim').style.display='block'};
+
+// letter
+$('ltxt').textContent=LETTER;
+$('env').onclick=()=>{$('env').style.display='none';$('let').style.display='flex';$('kiss').style.display='block'};
+$('kiss').onclick=()=>{$('ov').style.display='flex';rain('💋',24);setTimeout(()=>{$('ov').style.display='none';$('rep').style.display='inline-block'},4500)};
+$('rep').onclick=()=>{hist=[];go(0,1)};
+
+fill(document.body);rain('💛',14);
+</script></body></html>
